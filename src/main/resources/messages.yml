@@ -1,0 +1,9 @@
+noPermission: "&c&lSorry&7, you don't have permission for this."
+
+cannotBuildHere: "&c&lSorry&7, you can't use a Chunk Buster here."
+
+gaveChunkBusters: "&7You've given &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l] &7to &c%player%&7."
+
+receivedChunkBusters: "&7You've received &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l]&7."
+
+factionsNeedHigherRank: "&c&lSorry&7, you must be at least &c%rank% &7to chunkbust here."

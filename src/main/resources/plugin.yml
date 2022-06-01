@@ -1,0 +1,11 @@
+name: ChunkBusters
+version: 1.0-SNAPSHOT
+description: Delete everything in a chunk with a simple action.
+main: com.trsoftware.chunkbusters.ChunkBusters
+author: TRSoftware
+api-version: 1.18
+softdepend: [Vault, Factions, WorldGuard]
+commands:
+  chunkbusters:
+    aliases: [cb, chunkbuster]
+    usage: /chunkbuster help
