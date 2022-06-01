@@ -1,5 +1,7 @@
 noPermission: "&c&lSorry&7, you don't have permission for this."
 
+mustBeNumber: "&c&lSorry&7, you must specify the amount to give!"
+
 cannotBuildHere: "&c&lSorry&7, you can't use a Chunk Buster here."
 
 gaveChunkBusters: "&7You've given &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l] &7to &c%player%&7."

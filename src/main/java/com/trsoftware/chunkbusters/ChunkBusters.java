@@ -118,4 +118,16 @@ public class ChunkBusters extends JavaPlugin {
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
     }
 
+    public boolean isInteger(String string) {
+        if (string == null) {
+            return false;
+        }
+        try {
+            double d = Integer.parseInt(string);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
 }

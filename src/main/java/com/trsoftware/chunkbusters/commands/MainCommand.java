@@ -28,7 +28,10 @@ public class MainCommand implements CommandExecutor {
             case 3:
                 if(args[0].equalsIgnoreCase("give")) {
                     if (sender.hasPermission("chunkbusters.give")) {
-                        //TODO check last arg is int
+                        if(!plugin.isInteger(args[2])) {
+                            plugin.sendMessageToConsole(sender, plugin.pmessages.getString("mustBeNumber"));
+                            return true;
+                        }
                         plugin.bm.giveChunkBuster(sender, args[1], Integer.valueOf(args[2]));
                     } else {
                         plugin.sendMessageToConsole(sender, plugin.pmessages.getString("noPermission"));
