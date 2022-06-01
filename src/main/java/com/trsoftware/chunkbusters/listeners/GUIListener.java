@@ -40,6 +40,8 @@ public class GUIListener implements Listener {
         int pSlot = p.getInventory().getHeldItemSlot();
         double ecoCost = plugin.getConfig().getDouble("ecoCost");
 
+        //TODO refactor this whole section to be less gross
+
         if(e.getSlot() == 11) {
             //TODO send message
             if(plugin.isVaultEnabled && ecoCost > 0.00) {
@@ -51,6 +53,22 @@ public class GUIListener implements Listener {
                     return;
                 }
             }
+
+            if(plugin.getConfig().getBoolean("blockIfOtherPlayersInChunk")) {
+                if(p.getLocation().getWorld().getPlayers().size() > 0) {
+                    for (Player others : p.getLocation().getWorld().getPlayers()) {
+                        if(!others.getName().equals(p.getName())) {
+                            if(others.getLocation().getChunk().equals(plugin.bm.playerLocation.get(p).getChunk())) {
+                                plugin.sendMessage(p, plugin.pmessages.getString("playersInChunk"));
+                                plugin.bm.playerLocation.remove(p);
+                                p.closeInventory();
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
             plugin.bm.useChunkBuster(p, plugin.bm.playerLocation.get(p), true);
             if(p.getInventory().getItemInMainHand().getAmount() > 1) {
                 ItemStack temp = p.getInventory().getItemInMainHand();
@@ -70,6 +88,22 @@ public class GUIListener implements Listener {
                     return;
                 }
             }
+
+            if(plugin.getConfig().getBoolean("blockIfOtherPlayersInChunk")) {
+                if(p.getLocation().getWorld().getPlayers().size() > 0) {
+                    for (Player others : p.getLocation().getWorld().getPlayers()) {
+                        if(!others.getName().equals(p.getName())) {
+                            if(others.getLocation().getChunk().equals(plugin.bm.playerLocation.get(p).getChunk())) {
+                                plugin.sendMessage(p, plugin.pmessages.getString("playersInChunk"));
+                                plugin.bm.playerLocation.remove(p);
+                                p.closeInventory();
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
             plugin.bm.useChunkBuster((Player) e.getWhoClicked(), plugin.bm.playerLocation.get(e.getWhoClicked()), false);
             if(p.getInventory().getItemInMainHand().getAmount() > 1) {
                 ItemStack temp = p.getInventory().getItemInMainHand();
