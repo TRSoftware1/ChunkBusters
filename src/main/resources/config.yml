@@ -25,6 +25,9 @@ gui:
 # This is only useful if you might have WG regions that might be incomplete chunks OR not sky to bedrock
 extraWorldGuardCheck: true
 
+# Set this to true to prevent Chunk Busters from being placed if another player is in the same chunk
+blockIfOtherPlayersInChunk: true
+
 factions:
   # Prevent chunk busting in "wilderness"
   blockWilderness: true
