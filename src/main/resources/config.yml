@@ -1,3 +1,4 @@
+# These values make up the chunk buster item
 chunkBuster:
   item:
     type: END_PORTAL_FRAME
@@ -7,8 +8,11 @@ chunkBuster:
       - "&7Place this block in the chunk"
       - "&7that you wish to bust."
 
+# This is how much is costs to use a chunk buster
+# (Note: This relies on Vault)
 ecoCost: 500.00
 
+# These blocks will not be destroyed by a chunk buster
 whiteListedBlocks:
   - "SPAWNER"
   - "BEDROCK"
@@ -17,6 +21,8 @@ whiteListedBlocks:
   - "TRAPPED_CHEST"
   - "HOPPER"
 
+# This is the configuration that represents the GUI
+# that appears when a chunk buster is placed.
 gui:
   title: "&aConfirm ChunkBust"
   size: 27
@@ -44,6 +50,7 @@ gui:
       item: WHITE_STAINED_GLASS_PANE
       name: " "
       lore: {}
+
 # If this is set to "true", every block in the chunk will be checked for WG claims
 # Note: If a chunk buster is placed in a chunk the player cannot build in, it will be blocked regardless of what this is set as.
 # This is only useful if you might have WG regions that might be incomplete chunks OR not sky to bedrock
