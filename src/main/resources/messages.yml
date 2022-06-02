@@ -1,17 +1,29 @@
+# Sent to players use a command/perform an action without permission
 noPermission: "&c&lSorry&7, you don't have permission for this."
 
+# Sent to a command sender who tries to use a command with an invalid integer argument
 mustBeNumber: "&c&lSorry&7, you must specify the amount to give!"
 
+# Sent to a player that tries to use a chunk buster in a chunk another player is in
 playersInChunk: "&c&lSorry&7, there appear to be other players in this chunk!"
 
+# Sent to a player who tries to use a chunk buster somewhere that they can't build.
 cannotBuildHere: "&c&lSorry&7, you can't use a Chunk Buster here."
 
+# Sent to a command sender who uses /cb give
+# %player% = the target player, %amount% = the amount of chunk busters
 gaveChunkBusters: "&7You've given &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l] &7to &c%player%&7."
 
+# Sent to a player who receives chunk busters via /cb give
+# %amount% = the amount of chunk busters
 receivedChunkBusters: "&7You've received &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l]&7."
 
+# Sent to a player who tries to use a chunk buster without sufficient faction rank
+# IF factions is enabled and a player tries to use a chunk buster in their own territory
+# they must have the specified faction rank or above.
 factionsNeedHigherRank: "&c&lSorry&7, you must be at least &c%rank% &7to chunkbust here."
 
+# Help menu sent to players with permission: chunkbusters.admin.help
 adminHelp:
   - "&7>> &e&lChunk Busters &7<<"
   - "&f/cb give &c<player> <amount> &7- Give a player x amount of chunk busters."
@@ -19,6 +31,7 @@ adminHelp:
   - "&fHow to use a chunk buster &7- Place a chunk buster item down in a chunk."
   - "&7if you have access to chunk bust there, you will see a GUI with your options."
 
+# Help menu sent to players with permission: chunkbusters.help
 userHelp:
   - "&7>> &e&lChunk Busters &7<<"
   - "&fHow to use a chunk buster &7- Place a chunk buster item down in a chunk."
