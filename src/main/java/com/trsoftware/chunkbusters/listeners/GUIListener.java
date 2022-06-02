@@ -1,8 +1,6 @@
 package com.trsoftware.chunkbusters.listeners;
 
 import com.trsoftware.chunkbusters.ChunkBusters;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,7 +26,7 @@ public class GUIListener implements Listener {
             return;
         }
 
-        if(e.getRawSlot() >= 27) {
+        if(e.getRawSlot() >= plugin.getConfig().getInt("gui.size")) {
             e.setCancelled(true);
             e.getWhoClicked().closeInventory();
             return;
@@ -40,9 +38,7 @@ public class GUIListener implements Listener {
         int pSlot = p.getInventory().getHeldItemSlot();
         double ecoCost = plugin.getConfig().getDouble("ecoCost");
 
-        //TODO refactor this whole section to be less gross
-
-        if(e.getSlot() == 11) {
+        if(e.getSlot() == plugin.getConfig().getInt("gui.inventory.allLevelsButton.slot") || e.getSlot() == plugin.getConfig().getInt("gui.inventory.belowLevelsButton.slot")) {
             //TODO send message
             if(plugin.isVaultEnabled && ecoCost > 0.00) {
                 if (ChunkBusters.econ.getBalance(p) >= ecoCost) {
@@ -69,7 +65,6 @@ public class GUIListener implements Listener {
                 }
             }
 
-            plugin.bm.useChunkBuster(p, plugin.bm.playerLocation.get(p), true);
             if(p.getInventory().getItemInMainHand().getAmount() > 1) {
                 ItemStack temp = p.getInventory().getItemInMainHand();
                 temp.setAmount(temp.getAmount() - 1);
@@ -77,42 +72,14 @@ public class GUIListener implements Listener {
             } else {
                 p.getInventory().setItem(pSlot, null);
             }
-        } else if(e.getSlot() == 13) {
-            //TODO send message
-            if(plugin.isVaultEnabled && ecoCost > 0.00) {
-                if (ChunkBusters.econ.getBalance(p) >= ecoCost) {
-                    ChunkBusters.econ.withdrawPlayer(p, ecoCost);
-                } else {
-                    //TODO not enough money message
-                    p.closeInventory();
-                    return;
-                }
-            }
 
-            if(plugin.getConfig().getBoolean("blockIfOtherPlayersInChunk")) {
-                if(p.getLocation().getWorld().getPlayers().size() > 0) {
-                    for (Player others : p.getLocation().getWorld().getPlayers()) {
-                        if(!others.getName().equals(p.getName())) {
-                            if(others.getLocation().getChunk().equals(plugin.bm.playerLocation.get(p).getChunk())) {
-                                plugin.sendMessage(p, plugin.pmessages.getString("playersInChunk"));
-                                plugin.bm.playerLocation.remove(p);
-                                p.closeInventory();
-                                return;
-                            }
-                        }
-                    }
-                }
-            }
-
-            plugin.bm.useChunkBuster((Player) e.getWhoClicked(), plugin.bm.playerLocation.get(e.getWhoClicked()), false);
-            if(p.getInventory().getItemInMainHand().getAmount() > 1) {
-                ItemStack temp = p.getInventory().getItemInMainHand();
-                temp.setAmount(temp.getAmount() - 1);
-                p.getInventory().setItem(pSlot, temp);
+            if(e.getSlot() == plugin.getConfig().getInt("gui.inventory.allLevelsButton.slot")) {
+                plugin.bm.useChunkBuster(p, plugin.bm.playerLocation.get(p), true);
             } else {
-                p.getInventory().setItem(pSlot, null);
+                plugin.bm.useChunkBuster(p, plugin.bm.playerLocation.get(p), false);
             }
-        } else if(e.getSlot() == 15) {
+
+        } else if(e.getSlot() == plugin.getConfig().getInt("gui.inventory.exitButton.slot")) {
             //TODO send cancel message
         }
 
