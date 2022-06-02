@@ -22,40 +22,52 @@ public class GUIManager {
     public Inventory busterGUI = null;
 
     public void createInventory() {
-        busterGUI = Bukkit.createInventory(null, 27, ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gui.title")));
+        busterGUI = Bukkit.createInventory(null, plugin.getConfig().getInt("gui.size"), ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gui.title")));
 
-        ItemStack allLevels = new ItemStack(Material.FEATHER);
+        ItemStack allLevels = new ItemStack(Material.getMaterial(plugin.getConfig().getString("gui.inventory.allLevelsButton.item")));
         ItemMeta allLevelsMeta = allLevels.getItemMeta();
-        allLevelsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&bBust All Levels"));
+        allLevelsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gui.inventory.allLevelsButton.name")));
         ArrayList<String> allLevelsLore = new ArrayList<>();
-        allLevelsLore.add(ChatColor.translateAlternateColorCodes('&',"&7Click here to destroy ALL"));
-        allLevelsLore.add(ChatColor.translateAlternateColorCodes('&',"&7y-levels in this chunk."));
+        for(String lore : plugin.getConfig().getStringList("gui.inventory.allLevelsButton.lore")) {
+            allLevelsLore.add(ChatColor.translateAlternateColorCodes('&', lore));
+        }
         allLevelsMeta.setLore(allLevelsLore);
         allLevelsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         allLevels.setItemMeta(allLevelsMeta);
-        busterGUI.setItem(11, allLevels);
+        busterGUI.setItem(plugin.getConfig().getInt("gui.inventory.allLevelsButton.slot"), allLevels);
 
-        ItemStack belowLevels = new ItemStack(Material.WOODEN_SHOVEL);
+        ItemStack belowLevels = new ItemStack(Material.getMaterial(plugin.getConfig().getString("gui.inventory.belowLevelsButton.item")));
         ItemMeta belowLevelsMeta = belowLevels.getItemMeta();
-        belowLevelsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&bBust Lower Levels"));
+        belowLevelsMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gui.inventory.belowLevelsButton.name")));
         ArrayList<String> belowLevelsLore = new ArrayList<>();
-        belowLevelsLore.add(ChatColor.translateAlternateColorCodes('&',"&7Click here to destroy blocks in this chunk, at"));
-        belowLevelsLore.add(ChatColor.translateAlternateColorCodes('&',"&7the y-level this buster was placed at and below."));
+        for(String lore : plugin.getConfig().getStringList("gui.inventory.belowLevelsButton.lore")) {
+            belowLevelsLore.add(ChatColor.translateAlternateColorCodes('&', lore));
+        }
         belowLevelsMeta.setLore(belowLevelsLore);
         belowLevelsMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         belowLevels.setItemMeta(belowLevelsMeta);
-        busterGUI.setItem(13, belowLevels);
+        busterGUI.setItem(plugin.getConfig().getInt("gui.inventory.belowLevelsButton.slot"), belowLevels);
 
-        ItemStack exit = new ItemStack(Material.BARRIER);
+        ItemStack exit = new ItemStack(Material.getMaterial(plugin.getConfig().getString("gui.inventory.exitButton.item")));
         ItemMeta exitMeta = exit.getItemMeta();
-        exitMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&cCancel"));
+        exitMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gui.inventory.exitButton.name")));
+        ArrayList<String> exitLore = new ArrayList<>();
+        for(String lore : plugin.getConfig().getStringList("gui.inventory.exitButton.lore")) {
+            exitLore.add(ChatColor.translateAlternateColorCodes('&', lore));
+        }
+        exitMeta.setLore(exitLore);
         exitMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         exit.setItemMeta(exitMeta);
-        busterGUI.setItem(15, exit);
+        busterGUI.setItem(plugin.getConfig().getInt("gui.inventory.exitButton.slot"), exit);
 
-        ItemStack filler = new ItemStack(Material.WHITE_STAINED_GLASS_PANE);
+        ItemStack filler = new ItemStack(Material.getMaterial(plugin.getConfig().getString("gui.inventory.filler.item")));
         ItemMeta fillerMeta = filler.getItemMeta();
-        fillerMeta.setDisplayName(" ");
+        fillerMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gui.inventory.filler.name")));
+        ArrayList<String> fillerLore = new ArrayList<>();
+        for(String lore : plugin.getConfig().getStringList("gui.inventory.filler.lore")) {
+            fillerLore.add(ChatColor.translateAlternateColorCodes('&', lore));
+        }
+        fillerMeta.setLore(fillerLore);
         filler.setItemMeta(fillerMeta);
 
         for(int i = 0; i < 27; i++) {

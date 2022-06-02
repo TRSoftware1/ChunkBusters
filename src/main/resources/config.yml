@@ -19,7 +19,31 @@ whiteListedBlocks:
 
 gui:
   title: "&aConfirm ChunkBust"
-
+  size: 27
+  inventory:
+    allLevelsButton:
+      item: FEATHER
+      slot: 11
+      name: "&bBust All Levels"
+      lore:
+        - "&7Click here to destroy ALL"
+        - "&7y-levels in this chunk."
+    belowLevelsButton:
+      item: WOODEN_SHOVEL
+      slot: 13
+      name: "&bBust Lower Levels"
+      lore:
+        - "&7Click here to destroy blocks in this chunk, at"
+        - "&7the y-level this buster was placed at and below."
+    exitButton:
+      item: BARRIER
+      slot: 15
+      name: "&cCancel"
+      lore: {}
+    filler:
+      item: WHITE_STAINED_GLASS_PANE
+      name: " "
+      lore: {}
 # If this is set to "true", every block in the chunk will be checked for WG claims
 # Note: If a chunk buster is placed in a chunk the player cannot build in, it will be blocked regardless of what this is set as.
 # This is only useful if you might have WG regions that might be incomplete chunks OR not sky to bedrock
