@@ -20,7 +20,9 @@ import java.io.File;
 public class ChunkBusters extends JavaPlugin {
 
     /**
-     *     chunkbusters.give - /cb give <player> <amount>
+     *     chunkbusters.admin.give - /cb give <player> <amount>
+     *     chunkbusters.admin.help /cb help (admin version)
+     *     chunkbusters.help /cb help (user version)
      *     chunkbusters.use - Use a ChunkBuster
      */
 

@@ -17,17 +17,9 @@ public class MainCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
 
         switch (args.length) {
-            case 1:
-                //TODO
-                break;
-
-            case 2:
-                //TODO
-                break;
-
             case 3:
                 if(args[0].equalsIgnoreCase("give")) {
-                    if (sender.hasPermission("chunkbusters.give")) {
+                    if (sender.hasPermission("chunkbusters.admin.give")) {
                         if(!plugin.isInteger(args[2])) {
                             plugin.sendMessageToConsole(sender, plugin.pmessages.getString("mustBeNumber"));
                             return true;
@@ -36,14 +28,29 @@ public class MainCommand implements CommandExecutor {
                     } else {
                         plugin.sendMessageToConsole(sender, plugin.pmessages.getString("noPermission"));
                     }
+                } else {
+                    sendHelp(sender);
                 }
                 break;
 
             default:
-                //TODO help
+                sendHelp(sender);
                 break;
         }
 
         return true;
     }
+
+    private void sendHelp(CommandSender sender) {
+        if(sender.hasPermission("chunkbusters.admin.help")) {
+            for(String help : plugin.pmessages.getStringList("adminHelp")) {
+                plugin.sendMessageToConsole(sender, help);
+            }
+        } else if(sender.hasPermission("chunkbusters.help")) {
+            for(String help : plugin.pmessages.getStringList("userHelp")) {
+                plugin.sendMessageToConsole(sender, help);
+            }
+        }
+    }
+
 }

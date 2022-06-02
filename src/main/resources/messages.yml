@@ -11,3 +11,15 @@ gaveChunkBusters: "&7You've given &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l] &7to 
 receivedChunkBusters: "&7You've received &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l]&7."
 
 factionsNeedHigherRank: "&c&lSorry&7, you must be at least &c%rank% &7to chunkbust here."
+
+adminHelp:
+  - "&7>> &e&lChunk Busters &7<<"
+  - "&f/cb give &c<player> <amount> &7- Give a player x amount of chunk busters."
+  - " "
+  - "&fHow to use a chunk buster &7- Place a chunk buster item down in a chunk."
+  - "&7if you have access to chunk bust there, you will see a GUI with your options."
+
+userHelp:
+  - "&7>> &e&lChunk Busters &7<<"
+  - "&fHow to use a chunk buster &7- Place a chunk buster item down in a chunk."
+  - "&7if you have access to chunk bust there, you will see a GUI with your options."
