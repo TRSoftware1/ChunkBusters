@@ -12,6 +12,9 @@ chunkBuster:
 # (Note: This relies on Vault)
 ecoCost: 500.00
 
+# This is how long it takes for a chunk buster to go off (in seconds)
+chunkBustDelay: 5
+
 # These blocks will not be destroyed by a chunk buster
 whiteListedBlocks:
   - "SPAWNER"

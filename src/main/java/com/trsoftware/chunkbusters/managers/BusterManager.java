@@ -105,7 +105,7 @@ public class BusterManager {
                 }
             }
         }
-        removalQueue.runTaskTimer(plugin, 1L, 1L);
+        removalQueue.runTaskTimer(plugin, plugin.getConfig().getInt("chunkBustDelay") * 20L, 1L);
     }
 
     public boolean inRegion(Location loc) {
