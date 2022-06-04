@@ -70,9 +70,10 @@ public class GUIManager {
         fillerMeta.setLore(fillerLore);
         filler.setItemMeta(fillerMeta);
 
-        //TODO fix numbers to config
-        for(int i = 0; i < 27; i++) {
-            if(i == 11 || i == 13 || i == 15) {
+        for(int i = 0; i < plugin.getConfig().getInt("gui.size"); i++) {
+            if(i == plugin.getConfig().getInt("gui.inventory.allLevelsButton.slot")
+                    || i == plugin.getConfig().getInt("gui.inventory.belowLevelsButton.slot")
+                    || i == plugin.getConfig().getInt("gui.inventory.exitButton.slot")) {
                 continue;
             }
             busterGUI.setItem(i, filler);

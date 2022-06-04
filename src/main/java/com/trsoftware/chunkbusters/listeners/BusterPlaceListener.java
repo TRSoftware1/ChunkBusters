@@ -23,7 +23,10 @@ public class BusterPlaceListener implements Listener {
     @EventHandler
     public void onBusterPlace(BlockPlaceEvent e) {
 
-        //TODO check off-hand
+        if(e.getPlayer().getInventory().getItemInOffHand().isSimilar(plugin.bm.chunkBusterItem)) {
+            e.setCancelled(true);
+            return;
+        }
 
         if(e.getPlayer().getInventory().getItemInMainHand().isSimilar(plugin.bm.chunkBusterItem)) {
 
