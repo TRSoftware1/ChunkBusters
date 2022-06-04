@@ -38,13 +38,14 @@ public class GUIListener implements Listener {
         int pSlot = p.getInventory().getHeldItemSlot();
         double ecoCost = plugin.getConfig().getDouble("ecoCost");
 
-        if(e.getSlot() == plugin.getConfig().getInt("gui.inventory.allLevelsButton.slot") || e.getSlot() == plugin.getConfig().getInt("gui.inventory.belowLevelsButton.slot")) {
-            //TODO send message
+        if(e.getSlot() == plugin.getConfig().getInt("gui.inventory.allLevelsButton.slot")
+                || e.getSlot() == plugin.getConfig().getInt("gui.inventory.belowLevelsButton.slot")) {
             if(plugin.isVaultEnabled && ecoCost > 0.00) {
                 if (ChunkBusters.econ.getBalance(p) >= ecoCost) {
                     ChunkBusters.econ.withdrawPlayer(p, ecoCost);
                 } else {
-                    //TODO not enough money message
+                    plugin.sendMessage(p, plugin.pmessages.getString("insufficientFunds")
+                    .replaceAll("%cost%", String.valueOf(plugin.getConfig().getDouble("ecoCost"))));
                     p.closeInventory();
                     return;
                 }
@@ -74,15 +75,19 @@ public class GUIListener implements Listener {
             }
 
             if(e.getSlot() == plugin.getConfig().getInt("gui.inventory.allLevelsButton.slot")) {
+                plugin.sendMessage(p, plugin.pmessages.getString("bustAllLevels")
+                        .replaceAll("%seconds%", String.valueOf(plugin.getConfig().getInt("chunkBustDelay"))));
                 plugin.bm.useChunkBuster(p, plugin.bm.playerLocation.get(p), true);
             } else {
+                plugin.sendMessage(p, plugin.pmessages.getString("bustBelowLevels")
+                        .replaceAll("%seconds%", String.valueOf(plugin.getConfig().getInt("chunkBustDelay")))
+                .replaceAll("%y%", String.valueOf(plugin.bm.playerLocation.get(p).getBlockY())));
                 plugin.bm.useChunkBuster(p, plugin.bm.playerLocation.get(p), false);
             }
 
-        } else if(e.getSlot() == plugin.getConfig().getInt("gui.inventory.exitButton.slot")) {
-            //TODO send cancel message
+        } else {
+            plugin.sendMessage(p, plugin.pmessages.getString("closeGUI"));
         }
-
         plugin.bm.playerLocation.remove(p);
         p.closeInventory();
     }

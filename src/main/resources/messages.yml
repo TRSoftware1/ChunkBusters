@@ -7,6 +7,9 @@ mustBeNumber: "&c&lSorry&7, you must specify the amount to give!"
 # Sent when the target player is invalid
 invalidPlayer: "&7Cannot find player: &c%player%&7."
 
+# Sent when a player cannot afford to use a chunk buster
+insufficientFunds: "&c&lSorry&7, using a chunkbuster costs &c$%cost%&7."
+
 # Sent to a player that tries to use a chunk buster in a chunk another player is in
 playersInChunk: "&c&lSorry&7, there appear to be other players in this chunk!"
 
@@ -20,6 +23,15 @@ gaveChunkBusters: "&7You've given &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l] &7to 
 # Sent to a player who receives chunk busters via /cb give
 # %amount% = the amount of chunk busters
 receivedChunkBusters: "&7You've received &c%amount%x &5&l[ &e&lCHUNK BUSTER &5&l]&7."
+
+# Sent to a player after they click the "bust all levels" button
+bustAllLevels: "&7Busting &call y-levels &7in this chunk in &c%seconds% &7seconds."
+
+# Sent to a player after they click the "bust below levels" button
+bustBelowLevels: "&7Busting &cy-levels %y% and below &7in this chunk in &c%seconds% &7seconds."
+
+# Sent when a player closes the chunk buster GUI
+closeGUI: "&7You've closed the ChunkBuster menu."
 
 # Sent to a player who tries to use a chunk buster without sufficient faction rank
 # IF factions is enabled and a player tries to use a chunk buster in their own territory
