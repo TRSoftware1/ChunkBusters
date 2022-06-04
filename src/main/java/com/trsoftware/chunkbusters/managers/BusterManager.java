@@ -61,7 +61,13 @@ public class BusterManager {
     }
 
     public void giveChunkBuster(CommandSender sender, String pName, int amount) {
-        //TODO check player valid
+
+        if(Bukkit.getPlayer(pName) == null) {
+            plugin.sendMessageToConsole(sender, plugin.pmessages.getString("invalidPlayer")
+            .replaceAll("%player%", pName));
+            return;
+        }
+
         ItemStack buster = chunkBusterItem;
         buster.setAmount(amount);
         Bukkit.getPlayer(pName).getInventory().addItem(buster);

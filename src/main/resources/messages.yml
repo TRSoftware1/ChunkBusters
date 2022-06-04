@@ -4,6 +4,9 @@ noPermission: "&c&lSorry&7, you don't have permission for this."
 # Sent to a command sender who tries to use a command with an invalid integer argument
 mustBeNumber: "&c&lSorry&7, you must specify the amount to give!"
 
+# Sent when the target player is invalid
+invalidPlayer: "&7Cannot find player: &c%player%&7."
+
 # Sent to a player that tries to use a chunk buster in a chunk another player is in
 playersInChunk: "&c&lSorry&7, there appear to be other players in this chunk!"
 
