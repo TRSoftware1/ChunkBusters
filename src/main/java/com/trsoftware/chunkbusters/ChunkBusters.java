@@ -59,6 +59,8 @@ public class ChunkBusters extends JavaPlugin {
         if(Bukkit.getPluginManager().isPluginEnabled("Vault")) {
             isVaultEnabled = true;
         }
+        int pluginId = 15386;
+        Metrics metrics = new Metrics(this, pluginId);
 
     }
 
