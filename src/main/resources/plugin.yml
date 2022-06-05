@@ -3,7 +3,7 @@ version: 1.0
 description: Delete everything in a chunk with a simple action.
 main: com.trsoftware.chunkbusters.ChunkBusters
 author: TRSoftware
-api-version: 1.18
+api-version: 1.14
 softdepend: [Vault, Factions, WorldGuard]
 commands:
   chunkbusters:
