@@ -1,5 +1,5 @@
 name: ChunkBusters
-version: 1.0.1
+version: ${project.version}
 description: Delete everything in a chunk with a simple action.
 main: com.trsoftware.chunkbusters.ChunkBusters
 author: TRSoftware
