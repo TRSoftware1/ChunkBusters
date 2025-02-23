@@ -5,6 +5,7 @@ import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.trsoftware.chunkbusters.ChunkBusters;
+import com.trsoftware.chunkbusters.ColorUtils;
 import com.trsoftware.chunkbusters.RemovalQueue;
 import org.bukkit.*;
 import org.bukkit.command.CommandSender;
@@ -36,10 +37,11 @@ public class BusterManager {
         ItemStack item = new ItemStack(Material.getMaterial(plugin.getConfig().getString("chunkBuster.item.type")));
         ItemMeta itemMeta = item.getItemMeta();
 
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("chunkBuster.item.name")));
+
+        itemMeta.setDisplayName(ColorUtils.translateColorCodes(plugin.getConfig().getString("chunkBuster.item.name")));
         ArrayList<String> lore = new ArrayList<>();
         for(String itemLore : plugin.getConfig().getStringList("chunkBuster.item.lore")) {
-            lore.add(ChatColor.translateAlternateColorCodes('&', itemLore));
+            lore.add(ColorUtils.translateColorCodes(itemLore));
         }
         itemMeta.setLore(lore);
         itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

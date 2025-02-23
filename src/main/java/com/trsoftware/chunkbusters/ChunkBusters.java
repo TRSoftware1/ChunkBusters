@@ -7,7 +7,6 @@ import com.trsoftware.chunkbusters.managers.BusterManager;
 import com.trsoftware.chunkbusters.managers.GUIManager;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -108,18 +107,30 @@ public class ChunkBusters extends JavaPlugin {
         pmessages = YamlConfiguration.loadConfiguration(messages);
     }
 
+    public static boolean isVersionAbove1165() {
+        if (Bukkit.getVersion().contains("1.16.5")
+                || Bukkit.getVersion().contains("1.17")
+                || Bukkit.getVersion().contains("1.18")
+                || Bukkit.getVersion().contains("1.19")
+                || Bukkit.getVersion().contains("1.20")
+                || Bukkit.getVersion().contains("1.21")) {
+            return true;
+        }
+        return false;
+    }
+
     public void sendMessage(Player p, String s) {
-        if(s.equalsIgnoreCase("")) {
+        if (s.equalsIgnoreCase("")) {
             return;
         }
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
+        p.sendMessage(ColorUtils.translateColorCodes(s));
     }
 
     public void sendMessageToConsole(CommandSender sender, String s) {
-        if(s.equalsIgnoreCase("")) {
+        if (s.equalsIgnoreCase("")) {
             return;
         }
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
+        sender.sendMessage(ColorUtils.translateColorCodes(s));
     }
 
     public boolean isInteger(String string) {
