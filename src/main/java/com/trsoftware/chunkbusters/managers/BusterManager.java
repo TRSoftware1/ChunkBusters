@@ -88,7 +88,7 @@ public class BusterManager {
         RemovalQueue removalQueue = new RemovalQueue(plugin, p);
         Chunk chunk = loc.getChunk();
         noWaterChunks.add(chunk);
-        int start = loc.getWorld().getMaxHeight();
+        int start = loc.getWorld().getMaxHeight() - 1;
         if(!allLevels) {
             start = (int)loc.getY();
         }
